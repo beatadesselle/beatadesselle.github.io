@@ -39,20 +39,28 @@
 			var boardWidth;
 			var update;
 			var handleBoxClick;
+			var boardHeight;
+			
 
 			// jQuery stuff setup for you
 			box = $('.box');
 			boardWidth = $('.board').width();
+			boardHeight = $('.board').height();
 
 			// TODO 2
 			var position;
 			var points;
 			var speed;
+			var direction;
 			
-			position = 0;
+			
+			direction = 1;
+			positionX = 0;
+			positionY = 0;
 			points = 0;
 			speed = 10;
-			box.css('left', position); 
+			box.css('left', positionX);
+			box.css('top', positionY);
 			box.text(points);
 			
 
@@ -60,19 +68,28 @@
 
 			// TODO 3 / 4
 			update = function() {
-				position = position + speed;
-				box.css('left', position);
+				position = position + (speed * direction);
+				if(positionX > boardWidth) {
+					direction = -1;
+				} 
+				if(positionX < 0) {
+					direction = 1;
+				}
+				if(positionY > boardHeight) {
+					direction = -1;
+				}
+				if(positionY < 0) {
+					direction = 1;
+				}
+				box.css('left', positionx);
+				box.css('top', positionY);
 				box.text(points);
-				
-				
-
 			};
 
 
 			// TODO 5 / 6
 			handleBoxClick = function() {
 				speed = speed + 3;
-				position = 0;
 				points = points + 1;
 				
 
