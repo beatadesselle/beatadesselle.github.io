@@ -55,45 +55,36 @@
 			
 			
 			direction = 1;
-			positionX = 0;
-			positionY = 0;
+			position = 0;
 			points = 0;
 			speed = 10;
-			box.css('left', positionX);
-			box.css('top', positionY);
+			box.css('left', position);
 			box.text(points);
 			
-
-
+			
 
 			// TODO 3 / 4
 			update = function() {
 				position = position + (speed * direction);
-				if(positionX > boardWidth) {
+				if(position > boardWidth) {
 					direction = -1;
 				} 
-				if(positionX < 0) {
+				if(position < 0) {
 					direction = 1;
 				}
-				if(positionY > boardHeight) {
-					direction = -1;
-				}
-				if(positionY < 0) {
-					direction = 1;
-				}
-				box.css('left', positionx);
-				box.css('top', positionY);
+				
+				box.css('left', position);
 				box.text(points);
 			};
 
 
 			// TODO 5 / 6
 			handleBoxClick = function() {
-				speed = speed + 3;
+				speed = speed + 4;
+				position = 0;
 				points = points + 1;
-				
 
-			};
+			}
 
 
 			//this calls update every 50 milliseconds
